@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en-US" class="h-full">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Metronome</title>
+  <link href="dist/style.css" rel="stylesheet" type="text/css" />
+  <script src="script.js" defer></script>
+</head>
+
+<body class="h-full relative">
+  <div class="fixed w-[100lvw] h-[100lvh] bg-red-500 z-50 pointer-events-none" id="trance" style="opacity: 0;"></div>
+  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+    <div class="relative w-[300px] h-[500px]" id="metronome">
+      <svg viewBox="254.179 43.867 136.088 191.498" class="absolute top-0">
+        <path style="fill: rgb(216, 216, 216); stroke: rgb(0, 0, 0);"
+          d="M 296.074 44.376 L 254.179 235.063 L 390.267 235.365 L 347.864 43.867 L 296.074 44.376 Z"></path>
+        <path style="fill: rgb(216, 216, 216); stroke: rgb(0, 0, 0);" d="M 266.371 182.181 L 379.353 182.181"></path>
+        <path style="fill: rgb(216, 216, 216); stroke: rgb(0, 0, 0);" d="M 322.553 182.319 L 322.553 58.214"></path>
+      </svg>
+      <svg viewBox="189.211 62.718 91.509 180.071" class="absolute top-0 w-1/2 top-[10px] left-[76px] origin-bottom z-20" id="pendulum">
+        <line style="fill: rgb(216, 216, 216); stroke: rgb(0, 0, 0);" x1="234.746" y1="62.718" x2="234.746"
+          y2="242.789"></line>
+        <rect x="189.211" y="95" width="91.509" height="25.751"
+          style="fill: rgb(216, 0, 0); stroke: rgb(0, 0, 0);" id="weight"></rect>
+      </svg>
+    </div>
+  </div>
+  <details class="absolute left-1/2 -translate-x-1/2 bottom-16">
+    <summary>Options</summary>
+    <div class="mt-2 flex gap-4">
+      <div class="flex flex-col gap-2">
+        <div class="flex flex-col">
+          <label for="bpm"><input type="number" min="1" id="bpminput" class="w-16 mr-2 text-right　bg-transparent" value="60" />BPM</label>
+          <input type="range" value="60" id="bpm" min="1" max="300" />
+        </div>
+        <button id="reset" class="button">Reset</button>
+        <div class="flex gap-2 items-center">
+          <span>Audio</span>
+          <button id="audio_button" class="button">Choose Audio</button>
+          <button id="audio_remove" class="w-4 h-4 text-xs grid place-items-center">X</button>
+        </div>
+      </div>
+      <div class="flex flex-col gap-2">
+        <div class="flex items-center gap-2">
+          <input type="checkbox" id="game" />
+          <label for="game" id="gametext">Enable Game</label>
+        </div>
+        <span>Trance: <span id="trance_meter">0</span>%</span>
+      </div>
+      <div class="flex flex-col gap-2">
+        <div class="flex items-center gap-2">
+          <input type="checkbox" id="beat" />
+          <label for="beat">Enable Beat Sound</label>
+        </div>
+        <span class="flex items-center">Beat: <input type="number" min="1" max="12" id="beatinput" class="w-16 mr-2 text-right　bg-transparent" value="4" /></span>
+      </div>
+    </div>
+  </details>
+  <input type="file" accept="audio/*" id="audio" class="hidden" />
+  <span class="uppercase absolute font-2xl font-bold font-[cursive] hidden pointer-events-none" id="beathit">beat hit!</span>
+</body>
+
+</html>
